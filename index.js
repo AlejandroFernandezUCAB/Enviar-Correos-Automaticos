@@ -8,17 +8,18 @@ require('dotenv').config();
 
 const url = 'google.com';
 
-// var minutes = 1,
-// 	the_interval = minutes * 60 * 1000;
-// setInterval(function () {
-// 	console.log('I am doing my' + minutes + 'minutes check');
-// 	createping(url);
-// }, the_interval);
-createping(url);
+var minutes = 1,
+	the_interval = minutes * 60 * 1000;
+setInterval(function () {
+	console.log('I am doing my' + minutes + 'minutes check');
+	createping(url);
+}, the_interval);
+
+// createping(url);
 async function createping(ip) {
 	let date = new Date();
 
-	exec('timeout 1 ping -t ' + ip, function (err, stdout, stderr) {
+	exec('timeout 500 ping -t ' + ip, function (err, stdout, stderr) {
 		//Funcion que envia correo electronico
 		var transporter = nodemailer.createTransport({
 			host: 'smtp-mail.outlook.com', // hostname
